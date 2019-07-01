@@ -51,5 +51,27 @@ namespace TesonetWinParty.Helpers
                 }
             }
         }
+
+        public async Task<IEnumerable<Server>> GetServersList(string token)
+        {
+            _apiClient.DefaultRequestHeaders.Clear();
+            _apiClient.DefaultRequestHeaders.Accept.Clear();
+            _apiClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            _apiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer { token }");
+
+            using (HttpResponseMessage response = await _apiClient.GetAsync("http://playground.tesonet.lt/v1/servers"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    var servers = JsonConvert.DeserializeObject<IEnumerable<Server>>(result);
+                    return servers;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
     }
 }

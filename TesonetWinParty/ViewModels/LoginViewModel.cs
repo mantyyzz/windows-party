@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TesonetWinParty.EventModels;
 using TesonetWinParty.Helpers;
 
 namespace TesonetWinParty.ViewModels
@@ -13,10 +14,12 @@ namespace TesonetWinParty.ViewModels
         private string _userName;
         private string _password;
         private IAPIHelper _apiHelper;
+        private IEventAggregator _events;
 
-        public LoginViewModel(IAPIHelper apiHelper)
+        public LoginViewModel(IAPIHelper apiHelper, IEventAggregator events)
         {
             _apiHelper = apiHelper;
+            _events = events;
         }
 
 
@@ -81,6 +84,7 @@ namespace TesonetWinParty.ViewModels
             {
                 ErrorMessage = "";
                 var result = await _apiHelper.AuthenticateAsync(UserName, Password);
+                _events.PublishOnUIThread(new LogOnEventModel());
             }
             catch (Exception ex)
             {
