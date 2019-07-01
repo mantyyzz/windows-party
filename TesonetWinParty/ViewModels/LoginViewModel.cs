@@ -19,7 +19,7 @@ namespace TesonetWinParty.ViewModels
             _apiHelper = apiHelper;
         }
 
-        
+
         public string UserName
         {
             get { return _userName; }
@@ -43,6 +43,26 @@ namespace TesonetWinParty.ViewModels
             }
         }
 
+        public bool IsErrorVisible
+        {
+            get { return ErrorMessage?.Length > 0 ? true : false; }
+        }
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                NotifyOfPropertyChange(() => ErrorMessage);
+                NotifyOfPropertyChange(() => IsErrorVisible);
+            }
+        }
+
+
+
         public bool CanLogIn
         {
             get
@@ -59,14 +79,15 @@ namespace TesonetWinParty.ViewModels
         {
             try
             {
+                ErrorMessage = "";
                 var result = await _apiHelper.AuthenticateAsync(UserName, Password);
             }
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.Message);
+                ErrorMessage = ex.Message;
             }
-           
+
         }
     }
 }
