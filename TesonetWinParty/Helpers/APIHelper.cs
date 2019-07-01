@@ -52,7 +52,7 @@ namespace TesonetWinParty.Helpers
             }
         }
 
-        public async Task<IEnumerable<Server>> GetServersList(string token)
+        public async Task<List<Server>> GetServersList(string token)
         {
             _apiClient.DefaultRequestHeaders.Clear();
             _apiClient.DefaultRequestHeaders.Accept.Clear();
@@ -64,7 +64,7 @@ namespace TesonetWinParty.Helpers
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    var servers = JsonConvert.DeserializeObject<IEnumerable<Server>>(result);
+                    var servers = JsonConvert.DeserializeObject<List<Server>>(result);
                     return servers;
                 }
                 else

@@ -8,6 +8,6 @@ namespace TesonetWinParty.Helpers
     {
         Task<TokenItem> AuthenticateAsync(string username, string password);
 
-        Task<IEnumerable<Server>> GetServersList(string token);
+        Task<List<Server>> GetServersList(string token);
     }
 }

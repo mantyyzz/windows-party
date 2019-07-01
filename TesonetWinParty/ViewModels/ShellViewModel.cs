@@ -12,18 +12,16 @@ namespace TesonetWinParty.ViewModels
     {
         IEventAggregator _events;
         ServersViewModel _serversViewModel;
-        SimpleContainer _container;
 
-        public ShellViewModel(IEventAggregator events, ServersViewModel serversViewModel, SimpleContainer container)
+        public ShellViewModel(IEventAggregator events, ServersViewModel serversViewModel)
         {
             _serversViewModel = serversViewModel;
-            _container = container;
 
             _events = events;
             _events.Subscribe(this);
 
             //Main app visible screen
-            ActivateItem(_container.GetInstance<LoginViewModel>());
+            ActivateItem(IoC.Get<LoginViewModel>());
         }
 
         public void Handle(LogOnEventModel message)
@@ -33,7 +31,7 @@ namespace TesonetWinParty.ViewModels
 
         public void Handle(LogOutEvent message)
         {
-            ActivateItem(_container.GetInstance<LoginViewModel>());
+            ActivateItem(IoC.Get<LoginViewModel>());
         }
     }
 }
