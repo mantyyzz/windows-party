@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TesonetWinParty.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="800">
+        Title="Tesonet App" Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen" Visibility="Visible" Background="#0b0f27">
     <Grid>
         <ContentControl x:Name="ActiveItem" Margin="5" />
     </Grid>

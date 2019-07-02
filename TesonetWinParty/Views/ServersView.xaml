@@ -6,7 +6,12 @@
              xmlns:local="clr-namespace:TesonetWinParty.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
-    <Grid >
+    <UserControl.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -16,50 +21,98 @@
             <ColumnDefinition Width="1" />
             <ColumnDefinition Width="*" MinWidth="400" />
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="0" Grid.Column="2" x:Name="LogOut" />
-        <Image Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Left" Margin="40" Stretch="None"/>
-        <GridSplitter Grid.Column="1" Grid.Row="1" Width="5" HorizontalAlignment="Stretch" />
-        <Grid Grid.Row="1" Grid.Column="2" >
-            <Image  Stretch="UniformToFill" />
+
+        <Button Style="{StaticResource buttonLogOut}" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" x:Name="LogOut"/>
+
+        <Image Source="{StaticResource logoTestioDark}" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Left" Height="30" Margin="15" Stretch="Uniform"/>
+        <Grid Grid.Row="1" Grid.Column="2" Background="#0b0f27" >
+            <Image Source="{StaticResource serversImage}"  Stretch="UniformToFill" />
             <Grid VerticalAlignment="Center">
                 <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text=".NET Developer Task"  FontWeight="Light" FontSize="48"  Margin="30"/>
+                    <TextBlock Text=".NET Developer Task" Foreground="White"  FontWeight="Light" FontSize="40"  Margin="15"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="by"  FontWeight="Light" FontSize="20"  Margin="5"/>
-                        <Image  Height="17" Width="67" Stretch="UniformToFill" />
+                        <TextBlock Text="by" Foreground="White" FontWeight="Light" FontSize="20"  Margin="5"/>
+                        <Image Source="{StaticResource logoTestio}"  Height="20" Width="Auto" Stretch="UniformToFill" />
                     </StackPanel>
                 </StackPanel>
             </Grid>
         </Grid>
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Border BorderThickness="0,1,0,1"  Grid.Row="0"  ToolTip="Press F5 to refresh list">
-                <Grid HorizontalAlignment="Stretch" Margin ="40,20,40,20">
-                    <TextBlock Text="NAME" HorizontalAlignment="Left" />
-                    <TextBlock Text="DISTANCE" HorizontalAlignment="Right"  />
-                </Grid>
-            </Border>
 
-            <ListView  x:Name="Servers" Grid.Row="1" HorizontalContentAlignment="Stretch" BorderThickness="0">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="0,1,0,0" >
-                            <Grid HorizontalAlignment="Stretch" Margin ="40,20,40,20">
-                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" />
-                                <TextBlock Text="{Binding Distance}" HorizontalAlignment="Right"  />
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
+
+        <DataGrid x:Name="Servers" Grid.Column="0" Grid.Row="1" CanUserResizeRows="False" BorderThickness="0" FontFamily="{StaticResource robotoFont}" IsReadOnly="True" SelectionMode="Single" HeadersVisibility="Column" CanUserResizeColumns="False" CanUserReorderColumns="False" AutoGenerateColumns="False" CanUserSortColumns="False" FontSize="18" GridLinesVisibility="Horizontal" >
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#f5f5f5" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#ABABAB"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SERVER" FontFamily="{StaticResource robotoFont}" Binding="{Binding Name}" Width="*" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            <Setter Property="Padding" Value="20 0 0 0" />
+                            <Setter Property="Background" Value="#f5f5f5" />
+                            <Setter Property="Height" Value="50"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            <Setter Property="Margin" Value="20 0 0 0" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Height" Value="50"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="DISTANCE" FontFamily="{StaticResource robotoFont}" Binding="{Binding Distance, StringFormat={}{0} km}" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="0 0 20 0" />
+                            <Setter Property="Background" Value="#f5f5f5" />
+                            <Setter Property="Height" Value="50"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="HorizontalContentAlignment" Value="Right" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0 0 20 0" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Height" Value="50"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
