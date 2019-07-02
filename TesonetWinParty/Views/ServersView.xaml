@@ -29,9 +29,9 @@
             <Image Source="{StaticResource serversImage}"  Stretch="UniformToFill" />
             <Grid VerticalAlignment="Center">
                 <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text=".NET Developer Task" Foreground="White"  FontWeight="Light" FontSize="40"  Margin="15"/>
+                    <TextBlock Text=".NET Developer Task" Foreground="White" FontFamily="{StaticResource robotoFont}" FontWeight="Light" FontSize="38"  Margin="15"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="by" Foreground="White" FontWeight="Light" FontSize="20"  Margin="5"/>
+                        <TextBlock Text="by" FontFamily="{StaticResource robotoFont}" Foreground="White" FontWeight="Light" FontSize="20"  Margin="0 0 10 0"/>
                         <Image Source="{StaticResource logoTestio}"  Height="20" Width="Auto" Stretch="UniformToFill" />
                     </StackPanel>
                 </StackPanel>
@@ -39,7 +39,7 @@
         </Grid>
 
 
-        <DataGrid x:Name="Servers" Grid.Column="0" Grid.Row="1" CanUserResizeRows="False" BorderThickness="0" FontFamily="{StaticResource robotoFont}" IsReadOnly="True" SelectionMode="Single" HeadersVisibility="Column" CanUserResizeColumns="False" CanUserReorderColumns="False" AutoGenerateColumns="False" CanUserSortColumns="False" FontSize="18" GridLinesVisibility="Horizontal" >
+        <DataGrid x:Name="Servers" Grid.Column="0" Grid.Row="1" CanUserResizeRows="False" Foreground="#666666"  FontSize="16" FontWeight="Light" BorderThickness="0" FontFamily="{StaticResource robotoFont}" IsReadOnly="True" SelectionMode="Single" HeadersVisibility="Column" CanUserResizeColumns="False" CanUserReorderColumns="False" AutoGenerateColumns="False" CanUserSortColumns="False" GridLinesVisibility="Horizontal" >
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Triggers>
@@ -59,6 +59,7 @@
                             <Setter Property="HorizontalContentAlignment" Value="Left" />
                             <Setter Property="Padding" Value="20 0 0 0" />
                             <Setter Property="Background" Value="#f5f5f5" />
+                            <Setter Property="Foreground" Value="#b2b2b2"/>
                             <Setter Property="Height" Value="50"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
@@ -67,6 +68,9 @@
                             <Setter Property="HorizontalContentAlignment" Value="Left" />
                             <Setter Property="Margin" Value="20 0 0 0" />
                             <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="FontFamily" Value="{StaticResource robotoFont}" />
+                            <Setter Property="FontSize" Value="16" />
+                            <Setter Property="FontWeight" Value="Light" />
                             <Setter Property="Height" Value="50"/>
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True">
@@ -88,6 +92,7 @@
                             <Setter Property="HorizontalContentAlignment" Value="Right" />
                             <Setter Property="Padding" Value="0 0 20 0" />
                             <Setter Property="Background" Value="#f5f5f5" />
+                            <Setter Property="Foreground" Value="#b2b2b2"/>
                             <Setter Property="Height" Value="50"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>

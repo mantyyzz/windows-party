@@ -1,13 +1,14 @@
 ﻿using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TesonetWinParty.Helpers
 {
-    class DebugLogger : ILog
+    public class DebugLogger : ILog
     {
         private readonly Type _type;
 
@@ -25,17 +26,17 @@ namespace TesonetWinParty.Helpers
 
         public void Error(Exception exception)
         {
-            throw new NotImplementedException();
+            Debug.WriteLine(CreateLogMessage(exception.ToString()), "ERROR");
         }
 
         public void Info(string format, params object[] args)
         {
-            throw new NotImplementedException();
+            Debug.WriteLine(CreateLogMessage(format, args), "INFO");
         }
 
         public void Warn(string format, params object[] args)
         {
-            throw new NotImplementedException();
+            Debug.WriteLine(CreateLogMessage(format, args), "WARN");
         }
     }
 }

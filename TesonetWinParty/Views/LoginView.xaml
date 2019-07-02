@@ -12,21 +12,21 @@
             <ImageBrush ImageSource="{StaticResource background}" Stretch="UniformToFill"/>
         </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image Source="{StaticResource logoTestio}" Width="200" Margin="50"></Image>
-            <TextBlock x:Name="ErrorMessage" Width="250" Text="This is an error message" Visibility="{Binding IsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"  Margin="0 0 0 10" Foreground="Red" FontSize="18"></TextBlock>
-            <toolkit:WatermarkTextBox x:Name="UserName" FontFamily="{StaticResource robotoFont}" VerticalContentAlignment="Center"  Width="250" Height="30" Margin="0 0 0 10" >
+            <Image Source="{StaticResource logoTestio}" Width="250" Margin="50"></Image>
+            <TextBlock x:Name="ErrorMessage" Width="300" Text="This is an error message" FontFamily="{StaticResource robotoFont}" Visibility="{Binding IsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"  Margin="0 0 0 10" Foreground="Red" FontSize="18"></TextBlock>
+            <toolkit:WatermarkTextBox x:Name="UserName" FontFamily="{StaticResource robotoFont}" FontSize="16" FontWeight="Light" VerticalContentAlignment="Center"  Width="300" Height="40" Margin="0 0 0 10" >
                 <toolkit:WatermarkTextBox.Watermark>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
-                        <Image Source="{StaticResource iconUserName}" Stretch="None"/>
-                        <TextBlock Text="Username" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                        <Image Source="{StaticResource iconUserName}" Width="15" Stretch="Uniform"/>
+                        <TextBlock Text="Username" Margin="8,0,0,0" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </toolkit:WatermarkTextBox.Watermark>
             </toolkit:WatermarkTextBox>
-            <toolkit:WatermarkPasswordBox x:Name="Password" FontFamily="{StaticResource robotoFont}" VerticalContentAlignment="Center" Width="250" Height="30" Margin="0 0 0 10">
+            <toolkit:WatermarkPasswordBox x:Name="Password" FontFamily="{StaticResource robotoFont}" FontSize="16" FontWeight="Light" VerticalContentAlignment="Center" Width="300" Height="40" Margin="0 0 0 10">
                 <toolkit:WatermarkTextBox.Watermark>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{StaticResource iconPassword}" Stretch="None"/>
-                        <TextBlock Text="Password"  Margin="8,0,0,0" VerticalAlignment="Center"/>
+                        <Image Source="{StaticResource iconPassword}" Width="15" Stretch="Uniform"/>
+                        <TextBlock Text="Password" Margin="8,0,0,0" FontSize="16" VerticalAlignment="Center"/>
                     </StackPanel>
                 </toolkit:WatermarkTextBox.Watermark>
             </toolkit:WatermarkPasswordBox>

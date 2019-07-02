@@ -95,8 +95,8 @@
     <Compile Include="Helpers\AccountHelper.cs" />
     <Compile Include="Helpers\APIHelper.cs" />
     <Compile Include="Helpers\DebugLogger.cs" />
-    <Compile Include="Helpers\IAccountHelper.cs" />
-    <Compile Include="Helpers\IAPIHelper.cs" />
+    <Compile Include="Interfaces\IAccountHelper.cs" />
+    <Compile Include="Interfaces\IAPIHelper.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Models\Server.cs" />
     <Compile Include="Models\TokenItem.cs" />
@@ -132,6 +132,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Fonts\Roboto-Light.ttf" />
+    <Resource Include="Fonts\Roboto-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -145,7 +148,15 @@
     <Resource Include="Images\ico-lock.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\ColorsResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\ImageResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\StylesResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

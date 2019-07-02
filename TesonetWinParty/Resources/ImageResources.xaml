@@ -3,7 +3,6 @@
                     xmlns:local="clr-namespace:TesonetWinParty.Resources">
 
     <FontFamily x:Key="robotoFont">pack://application:,,,/Fonts/#Roboto</FontFamily>
-
     <BitmapImage x:Key="background" UriSource="/Images/background.png" />
     <BitmapImage x:Key="iconUserName" UriSource="/Images/ico-username.png" />
     <BitmapImage x:Key="iconPassword" UriSource="/Images/ico-lock.png" />
@@ -11,64 +10,5 @@
     <BitmapImage x:Key="serversImage" UriSource="/Images/servers-image.png" />
     <BitmapImage x:Key="logoTestioDark" UriSource="/Images/logo-testio-dark.png" />
     <BitmapImage x:Key="iconLogOut" UriSource="/Images/ico-logout.png" />
-
-
-
-    <SolidColorBrush x:Key="colorLoginBackground" Color="#9fd533"/>
-    <SolidColorBrush x:Key="colorLoginHover" Color="#86b300"/>
-    <SolidColorBrush x:Key="colorLogOutHover" Color="#99cc33"/>
-
-
-
-
-    <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="Background" Value="{StaticResource colorLoginBackground}"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="{StaticResource robotoFont}"></Setter>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Width" Value="250"/>
-        <Setter Property="Margin" Value="0 0 0 10"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="6" Background="{TemplateBinding Background}" BorderThickness="1" Padding="2">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource colorLoginHover}"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style TargetType="Button" x:Key="buttonLogOut">
-        <Setter Property="FontFamily" Value="{DynamicResource robotoFont}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel.Style>
-                            <Style TargetType="{x:Type StackPanel}">
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="{StaticResource colorLogOutHover}"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </StackPanel.Style>
-                        <Image Source="{StaticResource iconLogOut}" MaxWidth="15" Stretch="Uniform" Margin="10,10,5,10"/>
-                        <TextBlock Text="Logout" VerticalAlignment="Center" Margin="5,10,10,10"/>
-                    </StackPanel>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
+    
 </ResourceDictionary>
