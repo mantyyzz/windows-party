@@ -8,6 +8,7 @@
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="bootstrapeer"/>
                 </ResourceDictionary>
+                <ResourceDictionary Source="Resources\ImageResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         </ResourceDictionary>

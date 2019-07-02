@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using TesonetWinParty.Helpers;
 using TesonetWinParty.ViewModels;
+using Xceed.Wpf.Toolkit;
 
 namespace TesonetWinParty
 {
@@ -19,7 +20,7 @@ namespace TesonetWinParty
         {
             Initialize();
 
-            ConventionManager.AddElementConvention<PasswordBox>(
+            ConventionManager.AddElementConvention<WatermarkPasswordBox>(
            PasswordBoxHelper.BoundPasswordProperty,
            "Password",
            "PasswordChanged");
@@ -32,7 +33,8 @@ namespace TesonetWinParty
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
-                .Singleton<IAPIHelper, APIHelper>();
+                .Singleton<IAPIHelper, APIHelper>()
+                .Singleton<IAccountHelper, AccountHelper>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

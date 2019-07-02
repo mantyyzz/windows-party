@@ -15,12 +15,14 @@ namespace TesonetWinParty.ViewModels
     {
         private IAPIHelper _apiHelper;
         private IEventAggregator _events;
+        private IAccountHelper _accountHelper;
         private BindingList<Server> _servers;
 
-        public ServersViewModel(IAPIHelper apiHelper, IEventAggregator events)
+        public ServersViewModel(IAPIHelper apiHelper, IEventAggregator events, IAccountHelper accountHelper)
         {
             _events = events;
             _apiHelper = apiHelper;
+            _accountHelper = accountHelper;
         }
 
         public BindingList<Server> Servers
@@ -41,7 +43,7 @@ namespace TesonetWinParty.ViewModels
 
         private async Task LoadServers()
         {
-            var serversList = await _apiHelper.GetServersList("f9731b590611a5a9377fbd02f247fcdf");
+            var serversList = await _apiHelper.GetServersList(_accountHelper.Token.Token);
             Servers = new BindingList<Server>(serversList);
         }
 

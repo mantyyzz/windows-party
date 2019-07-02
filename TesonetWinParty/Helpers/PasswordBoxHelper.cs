@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Xceed.Wpf.Toolkit;
 
 namespace TesonetWinParty.Helpers
 {
@@ -19,7 +20,7 @@ namespace TesonetWinParty.Helpers
 
         public static string GetBoundPassword(DependencyObject d)
         {
-            var box = d as PasswordBox;
+            var box = d as WatermarkPasswordBox;
             if (box != null)
             {
                 // this funny little dance here ensures that we've hooked the
@@ -43,7 +44,7 @@ namespace TesonetWinParty.Helpers
             DependencyObject d,
             DependencyPropertyChangedEventArgs e)
         {
-            var box = d as PasswordBox;
+            var box = d as WatermarkPasswordBox;
 
             if (box == null)
             {
@@ -55,13 +56,9 @@ namespace TesonetWinParty.Helpers
 
         private static void PasswordChanged(object sender, RoutedEventArgs e)
         {
-            PasswordBox password = sender as PasswordBox;
+            WatermarkPasswordBox password = sender as WatermarkPasswordBox;
 
             SetBoundPassword(password, password.Password);
-
-            // set cursor past the last character in the password box
-            password.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(password, new object[] { password.Password.Length, 0 });
-            
         }
 
     }

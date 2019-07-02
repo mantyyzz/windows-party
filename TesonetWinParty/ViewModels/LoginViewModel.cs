@@ -13,12 +13,12 @@ namespace TesonetWinParty.ViewModels
     {
         private string _userName;
         private string _password;
-        private IAPIHelper _apiHelper;
+        private IAccountHelper _accountHelper;
         private IEventAggregator _events;
 
-        public LoginViewModel(IAPIHelper apiHelper, IEventAggregator events)
+        public LoginViewModel(IAccountHelper accountHelper, IEventAggregator events)
         {
-            _apiHelper = apiHelper;
+            _accountHelper = accountHelper;
             _events = events;
         }
 
@@ -64,8 +64,6 @@ namespace TesonetWinParty.ViewModels
             }
         }
 
-
-
         public bool CanLogIn
         {
             get
@@ -83,12 +81,11 @@ namespace TesonetWinParty.ViewModels
             try
             {
                 ErrorMessage = "";
-                var result = await _apiHelper.AuthenticateAsync(UserName, Password);
+                await _accountHelper.LogIn(UserName, Password);
                 _events.PublishOnUIThread(new LogOnEventModel());
             }
             catch (Exception ex)
             {
-
                 ErrorMessage = ex.Message;
             }
 
