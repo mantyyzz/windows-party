@@ -37,7 +37,7 @@ namespace TesonetWinParty.Helpers
                 new KeyValuePair<string, string>("password",password)
             });
 
-            using (HttpResponseMessage response = await _apiClient.PostAsync("http://playground.tesonet.lt/v1/tokens", data))
+            using (HttpResponseMessage response = await _apiClient.PostAsync("tokens", data))
             {
                 if(response.IsSuccessStatusCode)
                 {
@@ -59,7 +59,7 @@ namespace TesonetWinParty.Helpers
             _apiClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             _apiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer { token }");
 
-            using (HttpResponseMessage response = await _apiClient.GetAsync("http://playground.tesonet.lt/v1/servers"))
+            using (HttpResponseMessage response = await _apiClient.GetAsync("servers"))
             {
                 if (response.IsSuccessStatusCode)
                 {
