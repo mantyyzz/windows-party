@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace TesonetWinParty.Helpers
 {
-    public class DebugLogger : ILog
+    public class DebugLoggerHelper : ILog
     {
         private readonly Type _type;
 
-        public DebugLogger(Type type)
+        public DebugLoggerHelper(Type type)
         {
             _type = type;
         }

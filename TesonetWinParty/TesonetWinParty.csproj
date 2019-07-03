@@ -94,7 +94,7 @@
     <Compile Include="EventModels\LogOutEvent.cs" />
     <Compile Include="Helpers\AccountHelper.cs" />
     <Compile Include="Helpers\APIHelper.cs" />
-    <Compile Include="Helpers\DebugLogger.cs" />
+    <Compile Include="Helpers\DebugLoggerHelper.cs" />
     <Compile Include="Interfaces\IAccountHelper.cs" />
     <Compile Include="Interfaces\IAPIHelper.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />

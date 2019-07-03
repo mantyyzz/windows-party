@@ -46,7 +46,7 @@ namespace TesonetWinParty
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            LogManager.GetLog = type => new DebugLogger(type);
+            LogManager.GetLog = type => new DebugLoggerHelper(type);
             DisplayRootViewFor<ShellViewModel>();
         }
 

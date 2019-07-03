@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:TesonetWinParty.Resources">
 
     <FontFamily x:Key="robotoFont">pack://application:,,,/Fonts/#Roboto</FontFamily>
-    <BitmapImage x:Key="background" UriSource="/Images/background.png" />
+    <BitmapImage x:Key="backgroundImage" UriSource="/Images/background.png" />
     <BitmapImage x:Key="iconUserName" UriSource="/Images/ico-username.png" />
     <BitmapImage x:Key="iconPassword" UriSource="/Images/ico-lock.png" />
     <BitmapImage x:Key="logoTestio" UriSource="/Images/logo-testio.png" />
