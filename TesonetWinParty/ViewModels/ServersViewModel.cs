@@ -41,7 +41,7 @@ namespace TesonetWinParty.ViewModels
             await LoadServers();
         }
 
-        private async Task LoadServers()
+        public async Task LoadServers()
         {
             var serversList = await _apiHelper.GetServersList(_accountHelper.Token.Token);
             Servers = new BindingList<Server>(serversList);
